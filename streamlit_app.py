@@ -10,7 +10,7 @@ base_url = st.secrets["APP_URL"] or "https://your-flowise-url.com"
 flow_id = st.secrets["FLOW_ID"] or "abc"
 
 # Show title and description.
-st.title("💬 Flowise Streamlit Chat")
+st.title("💬 Flowise Streamlit ")
 st.write(
     "This is a simple chatbot that uses Flowise Python SDK"
 )

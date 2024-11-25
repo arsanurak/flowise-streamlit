@@ -72,7 +72,7 @@ def generate_response(prompt: str):
                 yield str(parsed_chunk['data'])
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 401:
-            yield f"Webhook request failed with 401 Unauthorized. Please check your User ID and API Key." #Handle 401 error
+            yield f"Webhook request failed with 401 Unauthorized. Please check your User ID and API Key. \n[https://wp.dollarsmart.co/api-key/]" #Handle 401 error
         else:
             yield f"An error occurred during the webhook request: {e}"
     except requests.exceptions.RequestException as e:

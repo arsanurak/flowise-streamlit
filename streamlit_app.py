@@ -21,7 +21,8 @@ with st.sidebar:
     api_key = st.text_input("API Key", type="password")
 
 #Webhook URL
-webhook_url = "https://wp.dollarsmart.co/wp-json/custom/v1/api-call"
+webhook_url = st.secrets["WEBHOOK_URL"] or "https://your-webhook-url.com"
+
 
 # Create a Flowise client.
 client = Flowise(base_url=base_url)
@@ -71,7 +72,7 @@ def generate_response(prompt: str):
                 yield str(parsed_chunk['data'])
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 401:
-            yield f"Webhook request failed with 401 Unauthorized. Please check your credentials." #Handle 401 error
+            yield f"Webhook request failed with 401 Unauthorized. Please check your User ID and API Key." #Handle 401 error
         else:
             yield f"An error occurred during the webhook request: {e}"
     except requests.exceptions.RequestException as e:
